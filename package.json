@@ -1,0 +1,11 @@
+{
+  "name": "float-number",
+  "version": "1.0.0",
+  "description": "浮点数计算",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wuxx dycong",
+  "license": "ISC"
+}
