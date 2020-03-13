@@ -9,7 +9,12 @@ module.exports = {
                 if (typeof _item === 'number') {
                     _arr.push(arr[i])
                 } else if (typeof _item === 'string') { // 有一些猪一样的后台喜欢把数字反成字符串
-                    _arr.push(Number(arr[i]))
+                    const _temp = Number(arr[i])
+                    if (isNaN(_temp)) {
+                        console.error('字符串转换数字失败，转换结果魏NaN')
+                    } else {
+                        _arr.push(Number(arr[i]))
+                    }
                 } else {
                     console.error(`illegal arguments at position ${i}, because of ${_item} is not string or number`)
                     return []
