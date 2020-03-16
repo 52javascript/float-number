@@ -38,5 +38,3 @@ module.exports = {
         return _res
     }
 }
-
-
