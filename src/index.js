@@ -39,7 +39,7 @@ Calc.prototype.add = function (a, b, options = {}) {
      * @param fixed 保留几位小数
      * @returns {*}
      */
-Calc.prototype.del = function (a, b, options = {}) {
+Calc.prototype.sub = function (a, b, options = {}) {
     this._options = mergeOptions(options)
     const _arguments = mergeArgumentsIsNumber([...arguments])
     // 减法相当于加上b的负数
@@ -72,4 +72,6 @@ Calc.prototype.div = function (a, b, options = {}) {
 
 exports.Calc =  Calc
 exports.add = Calc.prototype.add
-exports.del = Calc.prototype.del
+exports.mul = Calc.prototype.mul
+exports.sub = Calc.prototype.sub
+exports.div = Calc.prototype.div

@@ -11,9 +11,9 @@ js计算中常见的 0.1 + 0.2 = 0.30000000000000004
 配置项名称 | 参数值 | 说明
 ---|---|---
 add | add(a, b, options) | 简单加法, a或者b可以为数字或能转为number类型的字符串， option为object类型，具体参考下文配置项，下同
-del | del(a, b, options) | 简单减法
-mul | del(a, b, options) | 简单乘法
-div | del(a, b, options) | 简单除法
+sub | sub(a, b, options) | 简单减法
+mul | mul(a, b, options) | 简单乘法
+div | div(a, b, options) | 简单除法
 
 注意：如果传入的参数不合法，会抛出警告
 
@@ -25,7 +25,7 @@ div | del(a, b, options) | 简单除法
 
 ##### 简单加减乘除, 以加法为例
 
-    const {add,del} = require('float-number')
+    const {add, sub} = require('float-number')
 
     add(0.2, 0.1)  // 0.3
     
@@ -92,7 +92,7 @@ returnString | false | 是否返回String类型，默认返回Number
         fixed: 4 // 全局保留两位小数
     })
     
-    例子1。
+    例子1
     add(0.1, 0.2, {
         fixed: 2
     })  
@@ -100,7 +100,7 @@ returnString | false | 是否返回String类型，默认返回Number
     
     例子2.
     _fn.add(0.1, 0.2)
-    // 0.3
+    // 0.3000
     
 这两种方法在代码实现内部并没有什么区别，当使用构造函数创建的对象时， 只是会额外做一些全局的操作，比如上面的全局配置项等等。之所以这么做，是为了简单化复杂度，因为很多情况下我们只需要一个简单的 a + b, 为了提升这个使用的开发体验感，作者特意暴露了例子1这样的简单的加减乘除操作。
 

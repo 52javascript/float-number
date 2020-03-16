@@ -1,13 +1,16 @@
 {
   "name": "float-number",
   "version": "1.0.0",
-  "description": "浮点数计算",
-  "main": "index.js",
+  "description": "浮点数 浮点数计算 小数 小数计算 加法 减法 乘法 除法 float add plus subtract multiply sub divide",
+  "main": "dist/index.js",
+  "homepage": "https://github.com/wuxx0526/float-number",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
   },
-  "author": "wuxx dycong",
+
+  "author": "wuxiaoxiang <wuxxself@163.com>",
+  "contributors": ["dycong <dycong0715@163.com>"],
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.8.7",
