@@ -8,7 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
   },
-
+  "bugs": {
+    "url": "https://github.com/wuxx0526/float-number/issues"
+  },
   "author": "wuxiaoxiang <wuxxself@163.com>",
   "contributors": ["dycong <dycong0715@163.com>"],
   "license": "ISC",
