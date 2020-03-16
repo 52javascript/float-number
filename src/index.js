@@ -7,7 +7,9 @@ const {
 } = require('./utils/utils')
 
 const {
-    _add
+    _add,
+    _mul,
+    _div
 } = require('./core')
 
 function Calc (options) {
@@ -23,7 +25,7 @@ function Calc (options) {
      * @param fixed 保留几位小数
      * @returns {*}
      */
-    
+
 Calc.prototype.add = function (a, b, options = {}) {
     // console.log(this._base)
     this._options = mergeOptions(options)
@@ -43,5 +45,31 @@ Calc.prototype.del = function (a, b, options = {}) {
     const _arguments = mergeArgumentsIsNumber([...arguments])
     // 减法相当于加上b的负数
     return _add.call(this, _arguments[0], -(_arguments[1]))
+}
+/**
+ * 两个数的乘法
+ * @param a
+ * @param b
+ * @param options
+ * @returns {*}
+ */
+Calc.prototype.mul = function (a, b, options = {}) {
+    this._options = mergeOptions(options)
+    const _arguments = mergeArgumentsIsNumber([...arguments])
+    // 减法相当于加上b的负数
+    return _mul.call(this, _arguments[0], (_arguments[1]))
+}
+/**
+ * 两个数的除法
+ * @param a
+ * @param b
+ * @param options
+ * @returns {*|undefined}
+ */
+Calc.prototype.div = function (a, b, options = {}) {
+    this._options = mergeOptions(options)
+    const _arguments = mergeArgumentsIsNumber([...arguments])
+    // 减法相当于加上b的负数
+    return _div.call(this, _arguments[0], (_arguments[1]))
 }
 module.exports =  Calc
