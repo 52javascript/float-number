@@ -56,7 +56,6 @@ Calc.prototype.del = function (a, b, options = {}) {
 Calc.prototype.mul = function (a, b, options = {}) {
     this._options = mergeOptions(options)
     const _arguments = mergeArgumentsIsNumber([...arguments])
-    // 减法相当于加上b的负数
     return _mul.call(this, _arguments[0], (_arguments[1]))
 }
 /**
@@ -69,7 +68,6 @@ Calc.prototype.mul = function (a, b, options = {}) {
 Calc.prototype.div = function (a, b, options = {}) {
     this._options = mergeOptions(options)
     const _arguments = mergeArgumentsIsNumber([...arguments])
-    // 减法相当于加上b的负数
     return _div.call(this, _arguments[0], (_arguments[1]))
 }
 module.exports =  Calc
