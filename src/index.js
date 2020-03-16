@@ -69,7 +69,6 @@ Calc.prototype.div = function (a, b, options = {}) {
     const _arguments = mergeArgumentsIsNumber([...arguments])
     return _div.call(this, _arguments[0], (_arguments[1]))
 }
-module.exports =  Calc
 
 exports.Calc =  Calc
 exports.add = Calc.prototype.add
