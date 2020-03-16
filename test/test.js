@@ -1,4 +1,5 @@
-const Calc = require ('../src/index')
+const {Calc} = require ('../src/index')
+const {add} = require ('../src/index')
 
 // const obj = new Calc({
 //     fixed: 2
