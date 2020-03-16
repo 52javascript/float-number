@@ -1,5 +1,5 @@
 const {config} = require('../config')
-const { isPosNumber } = require('./validate')
+const { isPosNumber, isEmptyObject } = require('./validate')
 
 module.exports = {
     /**
@@ -7,12 +7,15 @@ module.exports = {
      * @param options 合并参数，并且进行校验
      * @returns {{}|{returnString: boolean, fixed: number, hex: number}}
      */
-    mergeOptions: function (options) {
+    mergeOptions: function (options, oldOptions) {
         if (typeof options !== 'object') {
             console.error(`配置项参数${options}不合法, 将使用默认配置项`)
             return config
         }
-        const _options = config
+        let _options = config
+        if (!isEmptyObject(oldOptions)) {
+            _options = oldOptions
+        }
         for (let key in options) {
             const item = options[key]
             // 如果配置项不合法，默认使用默认配置
@@ -34,7 +37,7 @@ module.exports = {
         let _res = res // 最终结果
         _res = fixed === -1 ? _res : _res.toFixed(fixed)
         _res = returnString ? _res + '' : _res
-        console.log('最终结果：' + res)
+        console.log('最终结果：' + _res)
         return _res
     }
 }

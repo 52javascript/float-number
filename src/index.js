@@ -13,9 +13,11 @@ const {
     _div
 } = require('./core')
 
+var __global = {}
+
 function Calc (options) {
-    console.log('执行了构造函数')
-    this._options = mergeOptions(options) // 合并配置项
+    __global.options = this._options = mergeOptions(options, __global.options) // 合并配置项
+    return this
 }
 
 /**
@@ -27,9 +29,9 @@ function Calc (options) {
      */
     
 Calc.prototype.add = function (a, b, options = {}) {
-    this._options = mergeOptions(options)
+    const _options = mergeOptions(options, __global.options)
     const _arguments = mergeArgumentsIsNumber([...arguments])
-    return _add.call(this, _arguments[0], _arguments[1])
+    return _add(_arguments[0], _arguments[1], _options)
 }
 
 /**
@@ -40,10 +42,10 @@ Calc.prototype.add = function (a, b, options = {}) {
      * @returns {*}
      */
 Calc.prototype.sub = function (a, b, options = {}) {
-    this._options = mergeOptions(options)
+    const _options = mergeOptions(options, __global.options)
     const _arguments = mergeArgumentsIsNumber([...arguments])
     // 减法相当于加上b的负数
-    return _add.call(this, _arguments[0], -(_arguments[1]))
+    return _add(_arguments[0], -(_arguments[1]), _options)
 }
 /**
  * 两个数的乘法
@@ -53,9 +55,9 @@ Calc.prototype.sub = function (a, b, options = {}) {
  * @returns {*}
  */
 Calc.prototype.mul = function (a, b, options = {}) {
-    this._options = mergeOptions(options)
+    const _options = mergeOptions(options, __global.options)
     const _arguments = mergeArgumentsIsNumber([...arguments])
-    return _mul.call(this, _arguments[0], (_arguments[1]))
+    return _mul(_arguments[0], (_arguments[1]), _options)
 }
 /**
  * 两个数的除法
@@ -65,9 +67,9 @@ Calc.prototype.mul = function (a, b, options = {}) {
  * @returns {*|undefined}
  */
 Calc.prototype.div = function (a, b, options = {}) {
-    this._options = mergeOptions(options)
+    const _options = mergeOptions(options, __global.options)
     const _arguments = mergeArgumentsIsNumber([...arguments])
-    return _div.call(this, _arguments[0], (_arguments[1]))
+    return _div(_arguments[0], (_arguments[1]), _options)
 }
 
 exports.Calc =  Calc

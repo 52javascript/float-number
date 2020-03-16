@@ -3,7 +3,7 @@ const {
 } = require('../utils/utils')
 
 module.exports = {
-    _add: function(a, b) {
+    _add: function(a, b, options) {
         let _a, _b
         try {
             _a = (a.toString().split('.')[1] || '').length
@@ -17,7 +17,7 @@ module.exports = {
         }
         const _base = Math.pow(10, Math.max(_a, _b))
         const res = (a * _base + b * _base) / _base
-        return packResult(res, this._options)
+        return packResult(res, options)
     },
     _mul: function (a, b){
         let _base = 0

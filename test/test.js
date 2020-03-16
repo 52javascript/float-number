@@ -1,9 +1,4 @@
-const {Calc, add} = require ('../src')
-console.log(Calc)
-const obj = new Calc({
-    fixed: 4
-})
-let a = obj.add(0.1, '2.03', {fixed: 4})
-let b = add(0.1, -0.2, {returnString: true})
-console.log(a)
-console.log(b)
+const {add, Calc} = require('../dist/float-number.min')
+new Calc({fixed: 4}).add(0.5, 0.6)
+
+add(0.1, 0.2, {fixed: 6})
