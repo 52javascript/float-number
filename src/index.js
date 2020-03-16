@@ -45,3 +45,4 @@ Calc.prototype.del = function (a, b, options = {}) {
 }
 exports.Calc =  Calc
 exports.add = Calc.prototype.add
+exports.del = Calc.prototype.del
