@@ -1,13 +1,29 @@
 {
   "name": "float-number",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "浮点数 浮点数计算 小数 小数计算 加法 减法 乘法 除法 float add plus subtract multiply sub divide",
-  "keywords": ["浮点数", "浮点数计算", "小数", "小数计算", "加法", "减法", "乘法", "除法", "float", "add", "plus", "subtract", "multiply", "sub", "divide"],
+  "keywords": [
+    "浮点数",
+    "浮点数计算",
+    "小数",
+    "小数计算",
+    "加法",
+    "减法",
+    "乘法",
+    "除法",
+    "float",
+    "add",
+    "plus",
+    "subtract",
+    "multiply",
+    "sub",
+    "divide"
+  ],
   "main": "./dist/float-number.min.js",
   "homepage": "https://github.com/wuxx0526/float-number",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c rollup.config.js"
+    "test": "mocha",
+    "build": "rollup -c rollup.config.js --watch"
   },
   "bugs": {
     "url": "https://github.com/wuxx0526/float-number/issues"
@@ -17,9 +33,11 @@
     "dycong <dycong0715@163.com>"
   ],
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "@babel/core": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.0",
     "rollup": "^2.0.6",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0"

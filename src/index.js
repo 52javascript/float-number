@@ -24,7 +24,7 @@ function Calc (options) {
      * 两个数的加法
      * @param a
      * @param b
-     * @param fixed 保留几位小数
+     * @param options 配置
      * @returns {*}
      */
     

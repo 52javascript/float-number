@@ -13,5 +13,8 @@ module.exports = {
     babel({
       exclude: 'node_modules/**' // 不对node_modules进行编译
     })
-  ]
+  ],
+  watch: {
+    include: 'src/**'
+  }
 }
