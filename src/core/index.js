@@ -27,7 +27,7 @@ const _core = {
         }
         return packResult(res, options)
     },
-    _mul: function (a, b){
+    _mul: function (a, b, options){
         let _base = 0
         try {
             _base = a.toString().split(".")[1].length
@@ -40,9 +40,9 @@ const _core = {
         const r1 = Number(a.toString().replace(".",""))
         const r2 = Number(b.toString().replace(".",""))
         const res = (r1 * r2) /Math.pow(10, _base)
-        return packResult(res, this._options)
+        return packResult(res, options)
     },
-    _div: function (a, b){
+    _div: function (a, b, options){
         let t1, t2
         try {
             t1 = a.toString().split(".")[1].length
@@ -55,7 +55,7 @@ const _core = {
         const r1 = Number(a.toString().replace(".",""))  //--去除小数点变整数
         const r2 = Number(b.toString().replace(".",""))  //--去除小数点变整数
         const res = (r1 / r2) * Math.pow(10,t2-t1)
-        return packResult(res, this._options)   //---整数相除 在乘上10的平方  小数点的长度
+        return packResult(res, options)   //---整数相除 在乘上10的平方  小数点的长度
     }
 }
 
