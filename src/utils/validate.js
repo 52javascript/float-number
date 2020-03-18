@@ -1,11 +1,20 @@
 module.exports = {
-    // 校验参数是否为数字
-    mergeArgumentsIsNumber: function (arr) {
+    /**
+     * 校验参数计算参数是否合法
+     * @param arr
+     * @param isMergeTotal 是否是累计运算
+     * @returns {[]|*[]}
+     */
+    mergeArgumentsIsNumber: function (arr, isMergeTotal) {
+        if (!Array.isArray(arr)) {
+            console.error('入参不合法')
+            return []
+        }
         const _arr = []
-        // const len = arr.length === 3 ? 2 : 2
+        const len = isMergeTotal === true ? arr.length : 2
         try {
             // 去除最后一个参数精度
-            for (let i = 0; i < 2; i++) {
+            for (let i = 0; i < len; i++) {
                 const _item = arr[i]
                 console.log(_item)
                 if (typeof _item === 'number') {

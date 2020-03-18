@@ -2,7 +2,7 @@ const {
     packResult
 } = require('../utils/utils')
 
-module.exports = {
+const _core = {
     _add: function(a, b, options) {
         let _a, _b
         try {
@@ -17,6 +17,14 @@ module.exports = {
         }
         const _base = Math.pow(10, Math.max(_a, _b))
         const res = (a * _base + b * _base) / _base
+        return packResult(res, options)
+    },
+    _adds: function(arr, options) {
+        let res = 0
+        const len = arr.length
+        for (let j = 0; j < len; j++) {
+            res= _core._add(arr[j], options)
+        }
         return packResult(res, options)
     },
     _mul: function (a, b){
@@ -50,3 +58,5 @@ module.exports = {
         return packResult(res, this._options)   //---整数相除 在乘上10的平方  小数点的长度
     }
 }
+
+module.exports = _core

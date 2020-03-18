@@ -10,7 +10,8 @@ const {
 const {
     _add,
     _mul,
-    _div
+    _div,
+    _adds
 } = require('./core')
 
 var __global = {}
@@ -72,8 +73,15 @@ Calc.prototype.div = function (a, b, options = {}) {
     return _div(_arguments[0], (_arguments[1]), _options)
 }
 
+Calc.prototype.adds = function(arr, options = {}) {
+    const _options = mergeOptions(options, __global.options)
+    const _arguments = mergeArgumentsIsNumber(arr, true)
+    return _adds(_arguments, _options)
+}
+
 exports.Calc =  Calc
 exports.add = Calc.prototype.add
+exports.adds = Calc.prototype.adds
 exports.mul = Calc.prototype.mul
 exports.sub = Calc.prototype.sub
 exports.div = Calc.prototype.div
