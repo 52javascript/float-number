@@ -22,7 +22,7 @@
   "main": "./dist/float-number.min.js",
   "homepage": "https://github.com/wuxx0526/float-number",
   "scripts": {
-    "test": "mocha test/test_adds.js",
+    "test": "mocha test/test_mul.js",
     "build": "rollup -c rollup.config.js --watch"
   },
   "bugs": {

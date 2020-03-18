@@ -30,11 +30,11 @@ const _core = {
     _mul: function (a, b, options){
         let _base = 0
         try {
-            _base = a.toString().split(".")[1].length
+            _base += a.toString().split(".")[1].length
         } catch (e) {
         }
         try {
-            _base = b.toString().split(".")[1].length
+            _base += b.toString().split(".")[1].length
         } catch (e) {
         }
         const r1 = Number(a.toString().replace(".",""))
