@@ -35,13 +35,15 @@ module.exports = {
      * @returns {string|Number} 显示的结果
      */
     packResult: function (res, options) {
-        // console.log('包装前的结果' + res)
+        if (options.returnOrigin === true) { // 是否原样返回，用于累计运算中
+            return res
+        }
+        console.log('包装前的结果' + res)
         const { fixed, returnString } = options
-       // console.log(returnString)
         let _res = res
         _res = fixed === -1 ? _res : _res.toFixed(fixed)
         _res = returnString ? (_res + '') : _res
-        // console.log('最终结果：' + _res)
+        console.log('最终结果：' + _res)
         return _res
     }
 }

@@ -19,11 +19,23 @@ const _core = {
         const res = (a * _base + b * _base) / _base
         return packResult(res, options)
     },
-    _adds: function(arr, options) {
-        let res = 0
+    /**
+     * 累计运算
+     * @param arr 带计算的数组
+     * @param key 带计算的方法
+     * @param options
+     * @returns {string|Number}
+     * @private
+     */
+    _total: function(arr, key, options) {
+        let res = arr[0]
         const len = arr.length
-        for (let j = 0; j < len; j++) {
-            res= _core._add(arr[j], options)
+        for (let j = 1; j < len; j++) {
+            if (key === '_sub') {
+                res= _core._add(res, -arr[j], {...options, ...{returnOrigin: true}})
+            } else {
+                res= _core[key](res, arr[j], {...options, ...{returnOrigin: true}})
+            }
         }
         return packResult(res, options)
     },
