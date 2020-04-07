@@ -23,7 +23,7 @@
   "homepage": "https://github.com/wuxx0526/float-number",
   "scripts": {
     "test": "mocha test/test_chain.js",
-    "build": "rollup -c rollup.config.js --watch"
+    "dev": "rollup -c rollup.config.js --watch"
   },
   "bugs": {
     "url": "https://github.com/wuxx0526/float-number/issues"

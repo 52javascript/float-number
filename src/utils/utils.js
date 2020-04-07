@@ -1,7 +1,7 @@
-const {config} = require('../config')
+const {config, isDebug} = require('../config')
 const { isPosNumber, isEmptyObject } = require('./validate')
 
-module.exports = {
+const utils = {
     /**
      * 初始化参数
      * @param options 合并参数，并且进行校验
@@ -38,12 +38,21 @@ module.exports = {
         if (options.returnOrigin === true) { // 是否原样返回，用于累计运算中
             return res
         }
-        console.log('包装前的结果' + res)
+        utils._console.log('包装前的结果' + res)
         const { fixed, returnString } = options
         let _res = res
         _res = fixed === -1 ? _res : _res.toFixed(fixed)
         _res = returnString ? (_res + '') : _res
-        console.log('最终结果：' + _res)
+        utils._console.log('最终结果：' + _res)
         return _res
+    },
+    _console: function () {
+        if (isDebug) {
+            return console
+        } else {
+            // 啥也不做
+        }
     }
 }
+
+module.exports = utils

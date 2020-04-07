@@ -1,3 +1,5 @@
+const {_console} = require('./utils')
+
 module.exports = {
     /**
      * 校验参数计算参数是否合法
@@ -16,7 +18,6 @@ module.exports = {
             // 去除最后一个参数精度
             for (let i = 0; i < len; i++) {
                 const _item = arr[i]
-                console.log(_item)
                 if (typeof _item === 'number') {
                     _arr.push(arr[i])
                 } else if (typeof _item === 'string') { // 有一些猪一样的后台喜欢把数字反成字符串
@@ -34,7 +35,7 @@ module.exports = {
         } catch (e) {
             console.error('参数解析报错', e)
         }
-        console.log('_arr', _arr)
+        _console.log('_arr', _arr)
         return _arr
     },
     isPosNumber: function (number) { // 是否是0和正整数
