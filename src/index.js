@@ -14,10 +14,7 @@ const {
     _total
 } = require('./core')
 
-var __global = {}
-
 function Calc (options) {
-    __global.options = this._options = mergeOptions(options, __global.options) // 合并配置项
     this._chain = {
         /**
          * 设置链头
@@ -46,7 +43,7 @@ function Calc (options) {
      */
     
 Calc.prototype.add = function (a, b, options = {}) {
-    const _options = mergeOptions(options, __global.options)
+    const _options = mergeOptions(options)
     const _arguments = mergeArgumentsIsNumber([...arguments])
     return _add(_arguments[0], _arguments[1], _options)
 }
@@ -59,7 +56,7 @@ Calc.prototype.add = function (a, b, options = {}) {
      * @returns {*}
      */
 Calc.prototype.sub = function (a, b, options = {}) {
-    const _options = mergeOptions(options, __global.options)
+    const _options = mergeOptions(options)
     const _arguments = mergeArgumentsIsNumber([...arguments])
     // 减法相当于加上b的负数
     return _add(_arguments[0], -(_arguments[1]), _options)
@@ -72,7 +69,7 @@ Calc.prototype.sub = function (a, b, options = {}) {
  * @returns {*}
  */
 Calc.prototype.mul = function (a, b, options = {}) {
-    const _options = mergeOptions(options, __global.options)
+    const _options = mergeOptions(options)
     const _arguments = mergeArgumentsIsNumber([...arguments])
     return _mul(_arguments[0], (_arguments[1]), _options)
 }
@@ -84,28 +81,28 @@ Calc.prototype.mul = function (a, b, options = {}) {
  * @returns {*|undefined}
  */
 Calc.prototype.div = function (a, b, options = {}) {
-    const _options = mergeOptions(options, __global.options)
+    const _options = mergeOptions(options)
     const _arguments = mergeArgumentsIsNumber([...arguments])
     return _div(_arguments[0], (_arguments[1]), _options)
 }
 
 Calc.prototype.adds = function(arr, options = {}) {
-    const _options = mergeOptions(options, __global.options)
+    const _options = mergeOptions(options)
     const _arguments = mergeArgumentsIsNumber(arr, true)
     return _total(_arguments, '_add',  _options)
 }
 Calc.prototype.subs = function(arr, options = {}) {
-    const _options = mergeOptions(options, __global.options)
+    const _options = mergeOptions(options)
     const _arguments = mergeArgumentsIsNumber(arr, true)
     return _total(_arguments, '_sub',  _options)
 }
 Calc.prototype.muls = function(arr, options = {}) {
-    const _options = mergeOptions(options, __global.options)
+    const _options = mergeOptions(options)
     const _arguments = mergeArgumentsIsNumber(arr, true)
     return _total(_arguments, '_mul',  _options)
 }
 Calc.prototype.divs = function(arr, options = {}) {
-    const _options = mergeOptions(options, __global.options)
+    const _options = mergeOptions(options)
     const _arguments = mergeArgumentsIsNumber(arr, true)
     return _total(_arguments, '_div',  _options)
 }
@@ -117,7 +114,7 @@ function chain(initNumber) {
 }
 Calc.prototype.cAdd = function(number) {
     let _this = this
-    const _options = mergeOptions({}, __global.options)
+    const _options = mergeOptions({})
     const _arguments = mergeArgumentsIsNumber([number, 0.01], true)
     const _params0 = _this._chain.getChainRes()
     const _params1 = _arguments[0]

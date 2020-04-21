@@ -1,14 +1,14 @@
 const assert = require('assert')
-
 const {add} = require('../dist/float-number.min')
+// const {add} = require('../src')
 
 describe('test_add', function () {
     it('base', function () { // 简单加法
-        assert.strictEqual(add(0.1, 0.2), 0.3)
+        assert.strictEqual(add(0.55, 0.14), 0.69)
     })
 
     it('fixed', function () { // 测试fixed
-        assert.strictEqual(add(0.1, 0.2, {fixed: 4}), '0.3000')
+        assert.strictEqual(add(0.55, 0.14, {fixed: 4}), '0.6900')
     })
 
     it('returnString', function () { // 测试returnString

@@ -16,7 +16,7 @@ const _core = {
             _b = 0
         }
         const _base = Math.pow(10, Math.max(_a, _b))
-        const res = (a * _base + b * _base) / _base
+        const res = (_core._mul(a, _base, {returnOrigin: true}) + _core._mul(b, _base, {returnOrigin: true})) / _base
         return packResult(res, options)
     },
     /**

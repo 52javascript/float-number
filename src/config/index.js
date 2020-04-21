@@ -6,4 +6,4 @@ module.exports.config = {
 
 module.exports.__key = ['add', 'del']
 
-module.exports.isDebug = true
+module.exports.isDebug = false

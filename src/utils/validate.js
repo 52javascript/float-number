@@ -1,6 +1,6 @@
-const {_console} = require('./utils')
+var _console = require('./console')
 
-module.exports = {
+var validate = {
     /**
      * 校验参数计算参数是否合法
      * @param arr
@@ -48,3 +48,5 @@ module.exports = {
         return true;
     }
 }
+
+module.exports = validate
