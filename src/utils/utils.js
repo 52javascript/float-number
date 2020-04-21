@@ -1,7 +1,7 @@
-var {config} = require('../config')
-var { isPosNumber, mergeArgumentsIsNumber } = require('./validate')
+const {config} = require('../config')
+const { isPosNumber, mergeArgumentsIsNumber } = require('./validate')
 const _console = require('./console')
-var utils = {
+const utils = {
     /**
      * 初始化参数
      * @param options 合并参数，并且进行校验
@@ -43,6 +43,13 @@ var utils = {
         _res = returnString ? (_res + '') : _res
         _console.log('最终结果：' + _res)
         return _res
+    },
+    getChainParams(number) {
+        // const _options = utils.mergeOptions({})
+        const _arguments = mergeArgumentsIsNumber([number, 0.01], true)
+        const _params0 = this._chain.getChainRes()
+        const _params1 = _arguments[0]
+        return [_params0, _params1]
     }
 }
 module.exports = utils

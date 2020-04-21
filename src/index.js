@@ -4,7 +4,9 @@ const {
 
 const {
     mergeOptions,
-    mergeKey
+    mergeKey,
+    getChainParams,
+    packResult
 } = require('./utils/utils')
 
 const {
@@ -28,8 +30,9 @@ function Calc (options) {
             return this.chainRes
         }
     }
-    this.val = function () {
-        return this._chain.getChainRes()
+    this.val = function (options = {}) {
+        const _options = mergeOptions(options)
+        return packResult(this._chain.getChainRes(), _options)
     }
     return this
 }
@@ -41,7 +44,7 @@ function Calc (options) {
      * @param options 配置
      * @returns {*}
      */
-    
+
 Calc.prototype.add = function (a, b, options = {}) {
     const _options = mergeOptions(options)
     const _arguments = mergeArgumentsIsNumber([...arguments])
@@ -113,13 +116,28 @@ function chain(initNumber) {
     return _super
 }
 Calc.prototype.cAdd = function(number) {
-    let _this = this
-    const _options = mergeOptions({})
-    const _arguments = mergeArgumentsIsNumber([number, 0.01], true)
-    const _params0 = _this._chain.getChainRes()
-    const _params1 = _arguments[0]
-    const _res = _add(_params0, _params1, {..._options, ...{returnOrigin: true}})
-    _this._chain.setChainRes(_res)
+    const [a, b] = getChainParams.call(this, number)
+    const _res = _add(a, b, {returnOrigin: true})
+    this._chain.setChainRes(_res)
+    return this
+}
+
+Calc.prototype.cSub = function(number) {
+    const [a, b] = getChainParams.call(this, number)
+    const _res = _add(a, -b, {returnOrigin: true})
+    this._chain.setChainRes(_res)
+    return this
+}
+Calc.prototype.cMul = function(number) {
+    const [a, b] = getChainParams.call(this, number)
+    const _res = _mul(a, b, {returnOrigin: true})
+    this._chain.setChainRes(_res)
+    return this
+}
+Calc.prototype.cDiv = function(number) {
+    const [a, b] = getChainParams.call(this, number)
+    const _res = _div(a, b, {returnOrigin: true})
+    this._chain.setChainRes(_res)
     return this
 }
 

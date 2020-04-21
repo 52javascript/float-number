@@ -1,6 +1,6 @@
-var _console = require('./console')
+const _console = require('./console')
 
-var validate = {
+const validate = {
     /**
      * 校验参数计算参数是否合法
      * @param arr
