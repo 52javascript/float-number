@@ -23,7 +23,7 @@ div | div(a, b, options) | 简单除法
 adds | adds([a,b,c...], options) | 累计运算加法
 subs | subs([a,b,c...], options) | 累计运算减法
 muls | muls([a,b,c...], options) | 累计运算乘法
-divs | divs([a,b,c...], options) | 累计运算加法
+divs | divs([a,b,c...], options) | 累计运算除法
 chain | 详细看下文demo | 链式调用(无优先级)
 注意：如果传入的参数不合法，会抛出警告
 

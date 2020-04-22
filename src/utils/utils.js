@@ -17,7 +17,7 @@ const utils = {
             const item = options[key]
             // 如果配置项不合法，默认使用默认配置
             if (key === 'fixed') {
-                console.log(mergeArgumentsIsNumber)
+                // console.log(mergeArgumentsIsNumber)
                 _options[key] = !isPosNumber(item) ? config[key] : item
             }
             if (key === 'returnString') {
