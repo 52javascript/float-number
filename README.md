@@ -8,6 +8,10 @@ js计算中常见的 0.1 + 0.2 = 0.30000000000000004
 
 为了解决上面这个蛋疼的问题，此工具应运而生
 
+### 运行环境
+
+只要支持js的环境都支持,工具内部已转码为es5,无需担心兼容性
+
 ### 支持方法列表
 
 配置项名称 | 参数值 | 说明
@@ -16,10 +20,10 @@ add | add(a, b, options) | 简单加法, a或者b可以为数字或能转为numb
 sub | sub(a, b, options) | 简单减法
 mul | mul(a, b, options) | 简单乘法
 div | div(a, b, options) | 简单除法
-adds | div([a,b,c...], options) | 累计运算加法
-muls | div([a,b,c...], options) | 累计运算减法
-muls | div([a,b,c...], options) | 累计运算乘法
-divs | div([a,b,c...], options) | 累计运算加法
+adds | adds([a,b,c...], options) | 累计运算加法
+subs | subs([a,b,c...], options) | 累计运算减法
+muls | muls([a,b,c...], options) | 累计运算乘法
+divs | divs([a,b,c...], options) | 累计运算加法
 chain | 详细看下文demo | 链式调用(无优先级)
 注意：如果传入的参数不合法，会抛出警告
 
