@@ -1,4 +1,6 @@
-# float-number
+# float-number（2.0.0）
+
+bugfixed: 解决issue2
 
 ###### 一段解决浮点数计算的工具代码
 
@@ -14,7 +16,11 @@ add | add(a, b, options) | 简单加法, a或者b可以为数字或能转为numb
 sub | sub(a, b, options) | 简单减法
 mul | mul(a, b, options) | 简单乘法
 div | div(a, b, options) | 简单除法
-
+adds | div([a,b,c...], options) | 累计运算加法
+muls | div([a,b,c...], options) | 累计运算减法
+muls | div([a,b,c...], options) | 累计运算乘法
+divs | div([a,b,c...], options) | 累计运算加法
+chain | 详细看下文demo | 链式调用(无优先级)
 注意：如果传入的参数不合法，会抛出警告
 
 ### 使用方法
@@ -53,54 +59,36 @@ div | div(a, b, options) | 简单除法
     const {add,del} = require('float-number')
 
     add(0.2, 0.1, {fixed: 2})  // 0.30  结果保留两位小数
+    
+##### 累计加减乘除, 以加法为例
+ 
+   const {adds} = require('float-number')
 
+    adds([0.2, 0.1, 0.3])  // 0.6
+    adds([0.2, 0.1, 0.3], {fixed: 2})  // '0.60'
+
+##### 链式调用（综合运算）, 注意，这没有运算符优先级
+
+    const {chain} = require('float-number.min')
+    chain(0.1) // 初始值0.1
+            .cAdd(6) // 加6
+            .cDiv(2) // 除2
+            .cSub(1.051) // 减1.051
+            .cMul(2.03) //乘2.03
+            .val()  // 4.05797
+    chain(0.1)
+        .cAdd(6)
+        .cDiv(2)
+        .cSub(1.051)
+        .cMul(2.03)
+        .val({fixed: 2})  // '4.06'
+ 
 ### 配置项
-
 
 配置项名称 | 默认值 | 说明
 ---|---|---
 fixed | -1 | 结果值保留几位小数， -1代表原样返回
 returnString | false | 是否返回String类型，默认返回Number
+    
 
-当然，这个工具也支持全局配置
-
-    const {Calc} = require('float-number')
-    
-    const _fn = new Calc({
-        fixed: 4 // 全局保留两位小数
-    })
-    add(0.1, 0.2) // 0.3000
-    _fn.add(0.1, 0.2)  // 0.3000
-    
-如果你在具体方法中写的配置项会覆盖全局配置
-
-    const {Calc, add} = require('float-number')
-    
-    const _fn = new Calc({
-        fixed: 4 // 全局保留两位小数
-    })
-    
-    add(0.1, 0.2, {
-        fixed: 2
-    })  // 0.30
-    
-至此，你应该发现了，任何方法都会有两种使用方法
-
-    const {Calc, add} = require('float-number')
-    
-    const _fn = new Calc({
-        fixed: 4 // 全局保留两位小数
-    })
-    
-    例子1
-    add(0.1, 0.2, {
-        fixed: 2
-    })  
-    // 0.30
-    
-    例子2.
-    _fn.add(0.1, 0.2)
-    // 0.3000
-    
-这两种方法在代码实现内部并没有什么区别，当使用构造函数创建的对象时， 只是会额外做一些全局的操作，比如上面的全局配置项等等。之所以这么做，是为了简单化复杂度，因为很多情况下我们只需要一个简单的 a + b, 为了提升这个使用的开发体验感，作者特意暴露了例子1这样的简单的加减乘除操作。
 

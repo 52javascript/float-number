@@ -4,6 +4,4 @@ module.exports.config = {
     __returnOrigin: false // 是否不包装直接返回
 }
 
-module.exports.__key = ['add', 'del']
-
 module.exports.isDebug = false
