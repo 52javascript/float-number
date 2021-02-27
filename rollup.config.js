@@ -5,14 +5,16 @@ const { eslint } = require('rollup-plugin-eslint') // eslint插件
 const ts = require('rollup-plugin-typescript2')
 const getPath = _path => path.resolve(__dirname, _path)
 const packageJSON = require('./package.json')
-
+const {nodeResolve} = require('@rollup/plugin-node-resolve')
+console.log(nodeResolve)
 module.exports = {
-  input: './src/index.js',
+  input: getPath('./src/index.ts'),
   output: {
-    file: './dist/float-number.min.js',
+    file: getPath('./dist/float-number.min.js'),
     format: 'cjs'
   },
   plugins: [ // 增加 plugins
+    nodeResolve(),
     commonjs(),
     babel({
       exclude: 'node_modules/**' // 不对node_modules进行编译
